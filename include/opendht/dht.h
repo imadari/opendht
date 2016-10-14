@@ -50,7 +50,7 @@ struct Request;
  * Must be given open UDP sockets and ::periodic must be
  * called regularly.
  */
-class Dht {
+class RING_PUBLIC Dht {
 public:
 
     // [[deprecated]]

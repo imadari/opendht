@@ -42,7 +42,7 @@ enum class NodeStatus {
 /**
  * Dht configuration.
  */
-struct Config {
+struct RING_PUBLIC Config {
     /** DHT node ID */
     InfoHash node_id;
 
@@ -60,7 +60,7 @@ struct Config {
 /**
  * SecureDht configuration.
  */
-struct SecureDhtConfig
+struct RING_PUBLIC SecureDhtConfig
 {
     Config node_config;
     crypto::Identity id;
@@ -79,8 +79,8 @@ using CertificateStoreQuery = std::function<std::vector<std::shared_ptr<crypto::
 
 typedef bool (*GetCallbackRaw)(std::shared_ptr<Value>, void *user_data);
 
-GetCallbackSimple bindGetCb(GetCallbackRaw raw_cb, void* user_data);
-GetCallback bindGetCb(GetCallbackSimple cb);
+RING_PUBLIC GetCallbackSimple bindGetCb(GetCallbackRaw raw_cb, void* user_data);
+RING_PUBLIC GetCallback bindGetCb(GetCallbackSimple cb);
 
 using DoneCallback = std::function<void(bool success, const std::vector<std::shared_ptr<Node>>& nodes)>;
 typedef void (*DoneCallbackRaw)(bool, std::vector<std::shared_ptr<Node>>*, void *user_data);
@@ -89,9 +89,9 @@ typedef void (*DoneCallbackSimpleRaw)(bool, void *user_data);
 
 using DoneCallbackSimple = std::function<void(bool success)>;
 
-ShutdownCallback bindShutdownCb(ShutdownCallbackRaw shutdown_cb_raw, void* user_data);
-DoneCallback bindDoneCb(DoneCallbackSimple donecb);
-DoneCallback bindDoneCb(DoneCallbackRaw raw_cb, void* user_data);
-DoneCallbackSimple bindDoneCbSimple(DoneCallbackSimpleRaw raw_cb, void* user_data);
+RING_PUBLIC ShutdownCallback bindShutdownCb(ShutdownCallbackRaw shutdown_cb_raw, void* user_data);
+RING_PUBLIC DoneCallback bindDoneCb(DoneCallbackSimple donecb);
+RING_PUBLIC DoneCallback bindDoneCb(DoneCallbackRaw raw_cb, void* user_data);
+RING_PUBLIC DoneCallbackSimple bindDoneCbSimple(DoneCallbackSimpleRaw raw_cb, void* user_data);
 
 }

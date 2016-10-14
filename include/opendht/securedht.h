@@ -40,7 +40,7 @@
 
 namespace dht {
 
-class SecureDht : public Dht {
+class RING_PUBLIC SecureDht : public Dht {
 public:
 
     typedef std::function<void(bool)> SignatureCheckCallback;
